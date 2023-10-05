@@ -6,6 +6,12 @@ public class FileTxtListSource : IContentSource<FileInfo>
     
     public IEnumerable<FileInfo> GetContents()
     {
-        return Enumerable.Empty<FileInfo>();
+        using var sr = new StreamReader(targetPath);
+        
+        while(sr.EndOfStream == false) {
+            var line = sr.ReadLine();
+            if(string.IsNullOrEmpty(line)) continue;
+            yield return new FileInfo(line);
+        }
     }
 }
