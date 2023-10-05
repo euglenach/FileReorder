@@ -2,7 +2,7 @@
 
 public class FileTxtListSource : IContentSource<FileInfo>
 {
-    readonly string targetPath = @"ContentSource/FileTargetList";
+    readonly string targetPath = @"../../../ContentSource/FileTargetList";
     
     public IEnumerable<FileInfo> GetContents()
     {
