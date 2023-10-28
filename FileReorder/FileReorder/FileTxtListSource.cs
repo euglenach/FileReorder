@@ -11,6 +11,7 @@ public class FileTxtListSource : IContentSource<FileInfo>
         while(sr.EndOfStream == false) {
             var line = sr.ReadLine();
             if(string.IsNullOrEmpty(line)) continue;
+            if(line[0] == '"' && line[^1] == '"') line = line[1..^1];
             yield return new FileInfo(line);
         }
     }
