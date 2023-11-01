@@ -8,7 +8,7 @@ public class FileTxtListSource : IContentSource<FileInfo>
     {
         using var sr = new StreamReader(targetPath);
         
-        while(sr.EndOfStream == false) {
+        while(!sr.EndOfStream) {
             var line = sr.ReadLine();
             if(string.IsNullOrEmpty(line)) continue;
             if(line[0] == '"' && line[^1] == '"') line = line[1..^1];
